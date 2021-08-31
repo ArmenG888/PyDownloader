@@ -1,6 +1,6 @@
 import socket,os,shutil
 from zipfile import ZipFile
-ip = '192.168.1.2'
+ip = '127.0.0.1'
 port = 52000
 class server:
     def __init__(self,ip,port):
