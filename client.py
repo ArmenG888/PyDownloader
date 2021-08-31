@@ -26,7 +26,9 @@ class client:
         
     def download(self):
         file = self.rec[self.index]
+        #sends the file name to download
         self.s.send(file.encode())
+        #recieves the size of the file and whether its file or a folder
         file_size = self.s.recv(1024).decode()
         is_dir = self.s.recv(1024).decode()
         is_dir = True if is_dir == "0" else False
@@ -36,15 +38,18 @@ class client:
             file_1 = file
         jsonString = bytearray()
         x = 0
+        #downloads by 1024
         while True:
             packet = self.s.recv(1024)
             x += 1024
             if not packet:
                 break
             jsonString.extend(packet)
+        #writes the file
         with open(file_1, "wb+") as w:
             w.write(jsonString)
         if is_dir == True:
+            #extract the zip for folder download
             with zipfile.ZipFile(file_1, 'r') as my_zip:
                 my_zip.extractall(file)
             os.remove(file_1)
