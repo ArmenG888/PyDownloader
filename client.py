@@ -1,6 +1,7 @@
 import socket,os,time,math,sys
 from tkinter import *
 from tkinter import ttk
+from tkinter import filedialog,messagebox
 from hurry.filesize import size
 import zipfile
 ip = '127.0.0.1'
@@ -10,12 +11,18 @@ class client:
         self.root = root
         #connect
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.s.connect((ip, port))
+        while True:
+            try:
+                self.s.connect((ip, port))
+                break
+            except Exception:
+                continue
         #ui
+        rec = self.s.recv(1024).decode()
         self.file_list = Listbox(self.root, height=8, width=50, border=0)
         self.file_list.pack(anchor = "nw")
         self.file_list.bind('<<ListboxSelect>>', self.select_file)
-        rec = self.s.recv(1024).decode()
+        
         Button(self.root, text="Download", bd = 0, font = ("calibri", 15), command=self.download).pack()
         self.rec = rec.split(",")
         for i in self.rec:
@@ -53,7 +60,7 @@ class client:
             with zipfile.ZipFile(file_1, 'r') as my_zip:
                 my_zip.extractall(file)
             os.remove(file_1)
-                
+        messagebox.showinfo("Success", file + " has succesfully downloaded")
 root = Tk()
 app = client(ip,port,root)
 mainloop()
