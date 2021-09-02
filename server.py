@@ -2,8 +2,9 @@ from tkinter import *
 from tkinter import filedialog,messagebox
 import socket,os,shutil
 from zipfile import ZipFile
-ip = '127.0.0.1'
+ip = socket.gethostbyname(socket.gethostname())
 port = 52000
+print("The server is running on IP", ip)
 class server:
     def __init__(self,ip,port):
         # set up the server and accept the client
