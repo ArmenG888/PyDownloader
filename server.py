@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import filedialog,messagebox
 import socket,os,shutil
 from zipfile import ZipFile
+# Detects the ipv4 address to use to bind the server
 ip = socket.gethostbyname(socket.gethostname())
 port = 52000
 print("The server is running on IP", ip)
@@ -17,11 +18,15 @@ class server:
         folder_selected = filedialog.askdirectory()
         self.prepare_download(folder_selected)
 
-    def prepare_download(self,directory=None):
+    def prepare_download(self,directory=""):
 
         # gets the list of files to send to the client
-        files = os.listdir(directory)
-        os.chdir(directory)
+        try:
+            files = os.listdir(directory)
+            os.chdir(directory)
+        except Exception:
+            files = os.listdir()
+        
         x = ""
         for i in files:
             x += i + ","
@@ -43,13 +48,13 @@ class server:
         self.conn.send(is_dir.encode())
         self.download(file)
         if is_dir == "0": os.remove(file)
-        #self.root.quit()
     def download(self,file):
-        #reads the file by 1024 and sends it to the client
+        # reads the file by 1024 and sends it to the client
         with open(file,"rb") as r:
             while True:
+                # reads the data by 1024
                 data = r.read(1024)
                 if not data:break
+                # sends the data
                 self.conn.send(data)
-
 app = server(ip,port)
