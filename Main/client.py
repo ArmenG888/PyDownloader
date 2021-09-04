@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import filedialog,messagebox
 from hurry.filesize import size
 import zipfile
-ip = '192.168.56.1'
+ip = '127.0.0.1'
 port = 52000
 class client:
     def __init__(self,ip,port,root):
