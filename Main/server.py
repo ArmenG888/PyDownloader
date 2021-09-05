@@ -3,7 +3,7 @@ from tkinter import filedialog,messagebox
 import socket,os,shutil
 from zipfile import ZipFile
 # Detects the ipv4 address to use to bind the server
-ip = socket.gethostbyname(socket.gethostname())
+ip = "127.0.0.1"
 port = 52000
 print("The server is running on IP", ip)
 class server:
