@@ -34,8 +34,6 @@ class server:
         # receives the name of the file and sends back the size of it
         file = self.conn.recv(1024).decode()
 
-        self.file_size = os.path.getsize(file)
-        self.conn.send(str(self.file_size).encode())
         # checks if is it folder or a file
         a = os.path.isdir(file)
         is_dir = "0" if a == True else "1" 
@@ -43,10 +41,14 @@ class server:
         if is_dir == "0":
             shutil.make_archive(file, 'zip',file)
             file += ".zip"
-
         # sends is it a folder or a file to the client
         self.conn.send(is_dir.encode())
+        # sends the size of the file or folder
+        self.file_size = os.path.getsize(file)
+        self.conn.send(str(self.file_size).encode())
+        # Calls the download function
         self.download(file)
+
         if is_dir == "0": os.remove(file)
     def download(self,file):
         # reads the file by 1024 and sends it to the client
