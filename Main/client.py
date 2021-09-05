@@ -30,7 +30,7 @@ class client:
         self.percent_label = Label(self.root, text="0%", font=('calibri',15))
         self.percent_label.pack(side=LEFT,anchor='w')
         Button(self.root, text="Download", bd =0, font = ("calibri", 15), command=self.download_ask).pack(side=LEFT,anchor='w')
-        
+
         self.available_files = available_files.split(",")
         # Inserts all of the available files to the list box
         for i in self.available_files:
