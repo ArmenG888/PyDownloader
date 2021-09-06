@@ -55,7 +55,8 @@ class client:
         # recieves the size of the file
         file_size = self.s.recv(1024).decode()
         file_size_con = size(int(file_size))
-        print(file_size)
+        print(file_size_con)
+
         # changes the file name whether its a zip file(folder) or a normal file
         if is_dir == True:
             file_1 = self.file + ".zip"
@@ -64,6 +65,7 @@ class client:
         jsonString = bytearray()
         x = 0
         y = 0
+        self.s.send("0".encode())
         # downloads by 1024
         while True:
             # Updates all of the ui

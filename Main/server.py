@@ -47,6 +47,7 @@ class server:
         self.file_size = os.path.getsize(file)
         self.conn.send(str(self.file_size).encode())
         # Calls the download function
+        self.conn.recv(1024)
         self.download(file)
     def download(self,file):
         # reads the file by 1024 and sends it to the client
