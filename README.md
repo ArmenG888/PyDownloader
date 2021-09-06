@@ -9,7 +9,7 @@ The client can download any file or folder that is located in servers folder.
 
 <h1> Installation </h1>
 1. Download it
-<pre>git clone https://github.com/ArmenG888/Downloader_python3/edit/main/README.md </pre>
+<pre>git clone https://github.com/ArmenG888/Downloader_python3 </pre>
 2. Move the client.py
 Move the client.py to the computer that you want to send files to and put the server.py in the computer from where you want to send.
 
