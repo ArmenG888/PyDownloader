@@ -4,14 +4,16 @@ Downloads files and folders
 This is very useful to transfer big files from one computer to another.
 
 The client can download any file or folder that is located in servers folder.
-For example the folder that is server located in has 5 files and the client will see all of the 5 files can download them
 
 ![Image of the app](https://raw.githubusercontent.com/ArmenG888/Downloader_python3/main/Screenshot/Downloader.PNG)
 
-Instrucations:
+<h1> Installation </h1>
+1. Download it
+<pre>git clone https://github.com/ArmenG888/Downloader_python3/edit/main/README.md </pre>
+2. Move the client.py
 Move the client.py to the computer that you want to send files to and put the server.py in the computer from where you want to send.
 
-Usage:
+<h1> Usage </h1>
 When you start the server and the client connects you need to choose the directory you want the client to be able to see and download things from that directory.
 
 The server needs to choose the directory that they want for the client to see and download files or folders from.
