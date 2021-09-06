@@ -1,4 +1,4 @@
-import socket,os,time,math,sys
+import socket,os,time,math,sys,datetime
 from tkinter import *
 from tkinter.ttk import Progressbar
 from tkinter import filedialog,messagebox
@@ -21,15 +21,16 @@ class client:
         # recieves the files that are available to download from server
         available_files = self.s.recv(1024).decode()
         # creates the list box for to show the files that the client can download
-        self.file_list = Listbox(self.root, height=8, width=60, border=0)
+        self.file_list = Listbox(self.root, height=8, width=80, border=0)
         self.file_list.pack(anchor = "nw")
         self.file_list.bind('<<ListboxSelect>>', self.select_file)
+        Button(self.root, text="Download", bd =0, font = ("calibri", 15), command=self.download_ask).pack(side=LEFT,anchor='w')
         self.progress = Progressbar(self.root, orient = HORIZONTAL,
               length = 100, mode = 'determinate')
         self.progress.pack(side=LEFT,anchor='w')
-        self.percent_label = Label(self.root, text="0%", font=('calibri',15))
+        self.percent_label = Label(self.root, text="0%", font=('calibri',12))
         self.percent_label.pack(side=LEFT,anchor='w')
-        Button(self.root, text="Download", bd =0, font = ("calibri", 15), command=self.download_ask).pack(side=LEFT,anchor='w')
+
 
         self.available_files = available_files.split(",")
         # Inserts all of the available files to the list box
@@ -63,25 +64,39 @@ class client:
         else:
             file_1 = self.file
         jsonString = bytearray()
+        mbpersecond_var = 0
         x = 0
         y = 0
         self.s.send("0".encode())
         # downloads by 1024
+        start = time.time()
+        speed = "0"
+        time_left = "NA"
         while True:
+
             # Updates all of the ui
             percentage = round(x/int(file_size)*100)
-            self.percent_label.config(text=str(percentage) + "%" + "," + size(x) + "/" + file_size_con)
+            self.percent_label.config(text=str(percentage) + "%" + "," + size(x) + "/" + file_size_con +","+ speed +" Megabytes per second \n Estimated Time left:" + time_left)
             self.progress['value'] = percentage
-            self.root.update_idletasks()
             # recieves the packet by 1024
             packet = self.s.recv(1024)
             # counts how much data it has recieved
+            mbpersecond_var += 1024
             x += 1024
             y += 1
             # refreshes the tkinter for it to not freeze
             if y == 5000:
                 y = 0
                 self.refresh()
+            if size(mbpersecond_var) == "1M":
+                mbpersecond_var = 0
+                end = time.time()
+                speed = str(round(1/(end-start), 1))
+
+                start = time.time()
+                time_ = round((int(file_size)-x) / 1000000 / float(speed))
+                print(time_)
+                time_left = str(datetime.timedelta(seconds=time_))
             if not packet:
                 break
             jsonString.extend(packet)
