@@ -95,7 +95,6 @@ class client:
 
                 start = time.time()
                 time_ = round((int(file_size)-x) / 1000000 / float(speed))
-                print(time_)
                 time_left = str(datetime.timedelta(seconds=time_))
             if not packet:
                 break
