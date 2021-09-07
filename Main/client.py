@@ -99,7 +99,6 @@ class client:
                 start = time.time()
                 # Gets the estimated time of the download
                 time_ = round((int(file_size)-x) / 1000000 / float(speed))
-                # Converts it from seconds to time
                 time_left = str(datetime.timedelta(seconds=time_))
             if not packet:
                 break
