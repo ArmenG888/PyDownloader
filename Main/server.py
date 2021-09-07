@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import filedialog,messagebox
 import socket,os,shutil
 from zipfile import ZipFile
+from hurry.filesize import size
 # Detects the ipv4 address to use to bind the server
 ip = '127.0.0.1'
 port = 52000
@@ -29,7 +30,7 @@ class server:
 
         x = ""
         for i in files:
-            x += i + ","
+            x += i + " " +size(os.path.getsize(i)) + ","
         self.conn.send(x.encode())
         # receives the name of the file and sends back the size of it
         file = self.conn.recv(1024).decode()

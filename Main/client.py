@@ -28,10 +28,10 @@ class client:
         self.progress = Progressbar(self.root, orient = HORIZONTAL,
               length = 100, mode = 'determinate')
         self.progress.pack(side=LEFT,anchor='w')
-        self.percent_label = Label(self.root, text="0%", font=('calibri',12))
+        self.percent_label = Label(self.root, text="0%", font=('calibri',15))
         self.percent_label.pack(side=LEFT,anchor='w')
-
-
+        self.info_label = Label(self.root, text="", font=('calibri',12))
+        self.info_label.pack(side=LEFT,anchor='w')
         self.available_files = available_files.split(",")
         # Inserts all of the available files to the list box
         for i in self.available_files:
@@ -76,7 +76,8 @@ class client:
 
             # Updates all of the ui
             percentage = round(x/int(file_size)*100)
-            self.percent_label.config(text=str(percentage) + "%" + "," + size(x) + "/" + file_size_con +","+ speed +" Megabytes per second \n Estimated Time left:" + time_left)
+            self.percent_label.config(text=str(percentage) + "%")
+            self.info_label.config(text="  " + size(x) + "/" + file_size_con +"  "+ speed +" Mib/s   ETA: " + time_left)
             self.progress['value'] = percentage
             # recieves the packet by 1024
             packet = self.s.recv(1024)
@@ -90,12 +91,15 @@ class client:
                 self.refresh()
             if size(mbpersecond_var) == "1M":
                 mbpersecond_var = 0
+                # stops the timer and resets the variable when it's 1M
                 end = time.time()
+                # gets the speed of the download
                 speed = str(round(1/(end-start), 1))
-
+                # starts new timer
                 start = time.time()
+                # Gets the estimated time of the download
                 time_ = round((int(file_size)-x) / 1000000 / float(speed))
-                print(time_)
+                # Converts it from seconds to time
                 time_left = str(datetime.timedelta(seconds=time_))
             if not packet:
                 break
