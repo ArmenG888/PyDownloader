@@ -30,7 +30,7 @@ class server:
 
         x = ""
         for i in files:
-            x += i
+            x += i +","
         self.conn.send(x.encode())
         # receives the name of the file and sends back the size of it
         file = self.conn.recv(1024).decode()
