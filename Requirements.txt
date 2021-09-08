@@ -1,1 +1,2 @@
 pip install hurry.filesize
+pip install PyQt5
