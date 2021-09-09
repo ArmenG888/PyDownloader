@@ -1,2 +1,3 @@
 pip install hurry.filesize
 pip install PyQt5
+pip install pyside2
