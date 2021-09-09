@@ -5,7 +5,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFo
 from PySide2.QtWidgets import *
 from ui_downloader import Ui_Main
 from hurry.filesize import size
-ip_port = ('127.0.0.1', 52000)
+ip_port = ('192.168.1.2', 52000)
 class SplashScreen(QMainWindow):
     def __init__(self,ip_port):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -25,7 +25,7 @@ class SplashScreen(QMainWindow):
         for i in self.available_files:
             self.ui.fielist.addItem(i)
         self.ui.fielist.itemClicked.connect(self.download)
-
+        self.ui.exit_button.clicked.connect(self.close)
         self.show()
     def download(self,item):
         self.file = item.text()
@@ -48,8 +48,10 @@ class SplashScreen(QMainWindow):
         self.s.send("0".encode())
         # downloads by 1024
         start = time.time()
+        start_time_elapsed = time.time()
         speed = "0"
         time_left = "NA"
+
         while True:
             # Updates all of the ui
             percentage = round(x/int(file_size)*100)
@@ -64,10 +66,9 @@ class SplashScreen(QMainWindow):
             if size(mbpersecond_var) == "1M":
                 mbpersecond_var = 0
                 end = time.time()
-                print(end-start)
                 # stops the timer and resets the variable when it's 1M
                 # gets the speed of the download
-                speed = str(round(1/((end-start)+0.01), 1))
+                speed = str(round(1/((end-start)+0.0000000000001), 1))
                 # starts new timer
                 start = time.time()
                 # Gets the estimated time of the download
@@ -81,6 +82,9 @@ class SplashScreen(QMainWindow):
         # writes the file
         with open(file_1, "wb+") as w:
             w.write(jsonString)
+        end_time_elapsed = time.time()
+        time_elapsed = str(datetime.timedelta(seconds=round(end_time_elapsed-start_time_elapsed)))
+        self.ui.Info_label.setText(" Time it took to download:" + time_elapsed)
         if is_dir == True:
             # extracts the zip file into a folder if the client was downloading folder
             with zipfile.ZipFile(file_1, 'r') as my_zip:

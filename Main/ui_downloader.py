@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'downloaderPCqgBP.ui'
+## Form generated from reading UI file 'downloaderYWTiEF.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -46,6 +46,7 @@ class Ui_Main(object):
         self.progressBar = QProgressBar(self.drop)
         self.progressBar.setObjectName(u"progressBar")
         self.progressBar.setGeometry(QRect(10, 270, 601, 23))
+        self.progressBar.setAutoFillBackground(False)
         self.progressBar.setStyleSheet(u"QProgressBar {\n"
 "	background-color: rgb(98,114,164);\n"
 "	color: rgb(200,200,200);\n"
@@ -70,6 +71,22 @@ class Ui_Main(object):
         self.fielist = QListWidget(self.drop)
         self.fielist.setObjectName(u"fielist")
         self.fielist.setGeometry(QRect(20, 70, 571, 192))
+        self.fielist.setStyleSheet(u"hover{\n"
+"color: rgb(98,114,250);\n"
+"}")
+        self.exit_button = QPushButton(self.drop)
+        self.exit_button.setObjectName(u"exit_button")
+        self.exit_button.setGeometry(QRect(590, 0, 31, 31))
+        font2 = QFont()
+        font2.setFamily(u"Segoe UI")
+        font2.setPointSize(18)
+        font2.setKerning(True)
+        self.exit_button.setFont(font2)
+        self.exit_button.setAcceptDrops(False)
+        self.exit_button.setAutoFillBackground(False)
+        self.exit_button.setStyleSheet(u"")
+        self.exit_button.setAutoDefault(False)
+        self.exit_button.setFlat(True)
 
         self.verticalLayout.addWidget(self.drop)
 
@@ -77,12 +94,16 @@ class Ui_Main(object):
 
         self.retranslateUi(Main)
 
+        self.exit_button.setDefault(False)
+
+
         QMetaObject.connectSlotsByName(Main)
     # setupUi
 
     def retranslateUi(self, Main):
         Main.setWindowTitle(QCoreApplication.translate("Main", u"MainWindow", None))
         self.Downloader.setText(QCoreApplication.translate("Main", u"<html><head/><body><p>Downloader</p><p><br/></p></body></html>", None))
-        self.Info_label.setText(QCoreApplication.translate("Main", u"<html><head/><body><p>NA/NA NA Mb/s ETA: NA</p></body></html>", None))
+        self.Info_label.setText(QCoreApplication.translate("Main", u"<html><head/><body><p>NA/NA NA Mb/s ETA: NA TM: NA</p></body></html>", None))
+        self.exit_button.setText(QCoreApplication.translate("Main", u"\u2715", None))
     # retranslateUi
 
