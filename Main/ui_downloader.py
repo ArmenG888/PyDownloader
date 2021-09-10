@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'downloaderYWTiEF.ui'
+## Form generated from reading UI file 'downloaderDMVVDa.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -70,7 +70,7 @@ class Ui_Main(object):
         self.Info_label.setAlignment(Qt.AlignCenter)
         self.fielist = QListWidget(self.drop)
         self.fielist.setObjectName(u"fielist")
-        self.fielist.setGeometry(QRect(20, 70, 571, 192))
+        self.fielist.setGeometry(QRect(20, 81, 571, 181))
         self.fielist.setStyleSheet(u"hover{\n"
 "color: rgb(98,114,250);\n"
 "}")
