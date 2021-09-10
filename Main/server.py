@@ -3,7 +3,6 @@ from tkinter import filedialog,messagebox
 import socket,os,shutil
 from zipfile import ZipFile
 from hurry.filesize import size
-# Detects the ipv4 address to use to bind the server
 ip_port = ("127.0.0.1", 52000)
 class server:
     def __init__(self,ip_port):
