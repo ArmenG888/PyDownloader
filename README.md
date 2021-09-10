@@ -14,13 +14,9 @@ The client can download any file or folder that is located in servers folder.
 
 2. Install the libraries
 Windows 
-<pre> pip install pyqt5 </pre>
-<pre> pip install pyside2 </pre>
-<pre> pip install hurry.filesize </pre>
+<pre> pip install -r requirements.txt </pre>
 Linux or Mac
-<pre> pip3 install pyqt5 </pre>
-<pre> pip3 install pyside </pre>
-<pre> pip3 install hurry.filesize </pre>
+<pre> pip3 install -r requirements.txt </pre>
 2. Move the client.py
 Move the client.py to the computer that you want to send files to and put the server.py in the computer from where you want to send.
 
