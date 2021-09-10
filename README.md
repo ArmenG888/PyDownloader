@@ -5,7 +5,7 @@ This is very useful to transfer big files from one computer to another.
 
 The client can download any file or folder that is located in servers folder.
 
-![Image of the app](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/Capture.PNG)
+![Image of the app](https://raw.githubusercontent.com/ArmenG888/PyDownloader/Repo/Screenshot/Capture.PNG)
 
 <h1> Installation </h1>
 1. Download it
@@ -20,4 +20,4 @@ When you start the server and the client connects you need to choose the directo
 
 The server needs to choose the directory that they want for the client to see and download files or folders from.
 
-![Image of the server choosing file](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/tk%209_5_2021%209_45_07%20AM.png)
+![Image of the server choosing file](https://raw.githubusercontent.com/ArmenG888/PyDownloader/Repo/Screenshot/tk%209_5_2021%209_45_07%20AM.png)
