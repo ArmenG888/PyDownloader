@@ -24,9 +24,13 @@ class SplashScreen(QMainWindow):
         self.available_files = available_files.split(",")
         for i in self.available_files:
             self.ui.fielist.addItem(i)
-        self.ui.fielist.itemClicked.connect(self.download)
+        self.ui.fielist.itemClicked.connect(self.ask_to_download)
         self.ui.exit_button.clicked.connect(self.close)
         self.show()
+    def ask_to_download(self,item):
+        reply = QMessageBox.question(self, "Downloader", "Do you really want to download " + item.text(), QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.download(item)
     def download(self,item):
         self.file = item.text()
         self.s.send(self.file.encode())
@@ -80,6 +84,7 @@ class SplashScreen(QMainWindow):
 
             jsonString.extend(packet)
         # writes the file
+        self.ui.Info_label.setText("Writing the file...")
         with open(file_1, "wb+") as w:
             w.write(jsonString)
         end_time_elapsed = time.time()
@@ -91,7 +96,7 @@ class SplashScreen(QMainWindow):
                 my_zip.extractall(self.file)
             # removes the zip file
             os.remove(file_1)
-
+        QMessageBox.information(self, "Succes", "The file " + self.file +" has succesfully been downloaded.")
 
 
 if __name__ == "__main__":
