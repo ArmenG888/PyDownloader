@@ -5,12 +5,12 @@ This is very useful to transfer big files from one computer to another.
 
 The client can download any file or folder that is located in servers folder.
 
-![Image of the app](https://raw.githubusercontent.com/ArmenG888/PyDownloader/Repo/Screenshot/Capture.PNG)
+![Image of the app](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/Capture.PNG)
 
 <h1> Installation </h1>
 1. Download it
 <pre> git clone https://github.com/ArmenG888/PyDownloader </pre>
-<pre> cd PyDownloader/Repo/ </pre>
+<pre> cd PyDownloader/PyDownloader/ </pre>
 
 2. Move the client.py
 Move the client.py to the computer that you want to send files to and put the server.py in the computer from where you want to send.
@@ -20,4 +20,4 @@ When you start the server and the client connects you need to choose the directo
 
 The server needs to choose the directory that they want for the client to see and download files or folders from.
 
-![Image of the server choosing file](https://raw.githubusercontent.com/ArmenG888/PyDownloader/Repo/Screenshot/tk%209_5_2021%209_45_07%20AM.png)
+![Image of the server choosing file](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/tk%209_5_2021%209_45_07%20AM.png)
