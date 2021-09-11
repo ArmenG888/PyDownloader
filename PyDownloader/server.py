@@ -1,28 +1,53 @@
-from tkinter import *
-from tkinter import filedialog,messagebox
-import socket,os,shutil
+import socket,os,shutil,sys
 from zipfile import ZipFile
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
+from ui_pydownloader import Ui_MainWindow
 from hurry.filesize import size
-ip_port = ("127.0.0.1", 52000)
-class server:
-    def __init__(self,ip_port):
+class server(QMainWindow):
+    def __init__(self):
+        ip = socket.gethostbyname(socket.gethostname())
+        port = 52000
         # set up the server and accept the client
+        QMainWindow.__init__(self)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ui.ip_entry.setText(ip)
+        self.ui.port_entry.setText(str(port))
+        self.ui.start_server_button.clicked.connect(self.start_server)
+        self.show()
+
+    def start_server(self):
+        print("start")
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        s.bind(ip_port)
+        s.bind((self.ui.ip_entry.text(), int(self.ui.port_entry.text())))
+        print(self.ui.ip_entry.text(), self.ui.port_entry.text())
         s.listen(5)
         self.conn, addr = s.accept()
-        # choose the directory for the client to download
-        folder_selected = filedialog.askdirectory()
-        self.prepare_download(folder_selected)
+        name = self.conn.recv(1024).decode()
+        QMessageBox.information(self, "Connected", name + " has succesfully connected.")
+        self.delete_start_screen()
+        directory = QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Folder')
+        self.prepare_download(directory)
+    def delete_start_screen(self):
+        self.ui.ip_entry.deleteLater()
+        self.ui.port_entry.deleteLater()
+        self.ui.ip_label.deleteLater()
+        self.ui.port_label.deleteLater()
+        self.ui.start_server_button.deleteLater()
 
     def prepare_download(self,directory=""):
-
+        print(directory)
         # gets the list of files to send to the client
-        try:
+        if directory != "":
             files = os.listdir(directory)
             os.chdir(directory)
-        except Exception:
+        else:
             files = os.listdir()
 
         x = ""
@@ -58,4 +83,8 @@ class server:
                 self.conn.send(data)
         # removes the zip file after the download is over
         if self.is_dir == "0": os.remove(file)
-app = server(ip_port)
+        quit()
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = server()
+    sys.exit(app.exec_())

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'downloaderDMVVDa.ui'
+## Form generated from reading UI file 'downloaderlSZEuY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -102,7 +102,7 @@ class Ui_Main(object):
 
     def retranslateUi(self, Main):
         Main.setWindowTitle(QCoreApplication.translate("Main", u"MainWindow", None))
-        self.Downloader.setText(QCoreApplication.translate("Main", u"<html><head/><body><p>Downloader</p><p><br/></p></body></html>", None))
+        self.Downloader.setText(QCoreApplication.translate("Main", u"<html><head/><body><p>PyDownloader</p><p><br/></p></body></html>", None))
         self.Info_label.setText(QCoreApplication.translate("Main", u"<html><head/><body><p>NA/NA NA Mb/s ETA: NA TM: NA</p></body></html>", None))
         self.exit_button.setText(QCoreApplication.translate("Main", u"\u2715", None))
     # retranslateUi

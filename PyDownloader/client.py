@@ -5,8 +5,8 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFo
 from PySide2.QtWidgets import *
 from ui_downloader import Ui_Main
 from hurry.filesize import size
-ip_port = ('127.0.0.1', 52000)
-class SplashScreen(QMainWindow):
+ip_port = ('192.168.56.1', 52000)
+class client(QMainWindow):
     def __init__(self,ip_port):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         while True:
@@ -15,12 +15,14 @@ class SplashScreen(QMainWindow):
                 break
             except Exception:
                 continue
+        self.s.send(socket.gethostname().encode())
+        available_files = self.s.recv(1024).decode()
         QMainWindow.__init__(self)
         self.ui = Ui_Main()
         self.ui.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        available_files = self.s.recv(1024).decode()
+
         self.available_files = available_files.split(",")
         for i in self.available_files:
             self.ui.fielist.addItem(i)
@@ -97,9 +99,9 @@ class SplashScreen(QMainWindow):
             # removes the zip file
             os.remove(file_1)
         QMessageBox.information(self, "Succes", "The file " + self.file +" has succesfully been downloaded.")
-
+        self.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = SplashScreen(ip_port)
+    window = client(ip_port)
     sys.exit(app.exec_())
