@@ -9,14 +9,18 @@ ip_port = ('192.168.56.1', 52000)
 class client(QMainWindow):
     def __init__(self,ip_port):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # connecting to the server
         while True:
             try:
                 self.s.connect(ip_port)
                 break
             except Exception:
                 continue
+        # sending the pc name to the Server
         self.s.send(socket.gethostname().encode())
+        # recieving the available files
         available_files = self.s.recv(1024).decode()
+        # sets up ui
         QMainWindow.__init__(self)
         self.ui = Ui_Main()
         self.ui.setupUi(self)
@@ -24,18 +28,24 @@ class client(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         self.available_files = available_files.split(",")
+        # adds all files into a list
         for i in self.available_files:
             self.ui.fielist.addItem(i)
+        # sets up commands for buttons
         self.ui.fielist.itemClicked.connect(self.ask_to_download)
         self.ui.exit_button.clicked.connect(self.close)
         self.show()
     def ask_to_download(self,item):
+        # asks a question
         reply = QMessageBox.question(self, "Downloader", "Do you really want to download " + item.text(), QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             self.download(item)
     def download(self,item):
+        # gets the file that is selected
         self.file = item.text()
+        # send the file that the client wants to download
         self.s.send(self.file.encode())
+        # receives if it's a directory
         is_dir = self.s.recv(1024).decode()
         is_dir = True if is_dir == "0" else False
         # recieves the size of the file
@@ -89,7 +99,9 @@ class client(QMainWindow):
         self.ui.Info_label.setText("Writing the file...")
         with open(file_1, "wb+") as w:
             w.write(jsonString)
+
         end_time_elapsed = time.time()
+        # calculates the time it took to download and shows it
         time_elapsed = str(datetime.timedelta(seconds=round(end_time_elapsed-start_time_elapsed)))
         self.ui.Info_label.setText(" Time it took to download:" + time_elapsed)
         if is_dir == True:
@@ -98,6 +110,7 @@ class client(QMainWindow):
                 my_zip.extractall(self.file)
             # removes the zip file
             os.remove(file_1)
+        # success message
         QMessageBox.information(self, "Succes", "The file " + self.file +" has succesfully been downloaded.")
         self.close()
 
