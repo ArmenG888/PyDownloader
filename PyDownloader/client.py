@@ -51,7 +51,6 @@ class client(QMainWindow):
         # recieves the size of the file
         file_size = self.s.recv(1024).decode()
         file_size_con = size(int(file_size))
-        print(file_size_con)
 
         # changes the file name whether its a zip file(folder) or a normal file
         if is_dir == True:
