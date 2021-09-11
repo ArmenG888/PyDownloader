@@ -6,6 +6,7 @@ This is very useful to transfer big files from one computer to another.
 The client can download any file or folder that is located in servers folder.
 
 ![Image of the app](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/Capture.PNG)
+![Image of the server](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/server_screenshot.PNG)
 
 <h1> Installation </h1>
 1. Download it
