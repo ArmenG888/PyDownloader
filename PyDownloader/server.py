@@ -22,19 +22,21 @@ class server(QMainWindow):
         self.show()
 
     def start_server(self):
-        print("start")
+        # setting up the server
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.bind((self.ui.ip_entry.text(), int(self.ui.port_entry.text())))
-        print(self.ui.ip_entry.text(), self.ui.port_entry.text())
         s.listen(5)
         self.conn, addr = s.accept()
         name = self.conn.recv(1024).decode()
+        # shows message of who is connected
         QMessageBox.information(self, "Connected", name + " has succesfully connected.")
         self.delete_start_screen()
         directory = QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Folder')
+        # starts the download
         self.prepare_download(directory)
     def delete_start_screen(self):
+        # deletes all the ui for setting up the server
         self.ui.ip_entry.deleteLater()
         self.ui.port_entry.deleteLater()
         self.ui.ip_label.deleteLater()
