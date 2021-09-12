@@ -1,5 +1,5 @@
 # PyDownloader
-Downloads files and folders
+Downloads files and folders at high speed (based on your interent speed).
 
 This is very useful to transfer big files from one computer to another.
 
