@@ -18,13 +18,12 @@ Windows
 Linux or Mac
 <pre> pip3 install -r requirements.txt </pre>
 2. Move the client.py
-Move the client.py to the computer that you want to send files to and put the server.py in the computer from where you want to send.
+Move the client.py or download to the computer that you want to send files to and put the server.py in the computer from where you want to send.
 
 ![Image of the server](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/server_screenshot.PNG)
 
 <h1> Usage </h1>
-When you start you need to type in your ip or port by default it will auto detect ip and 52000 port then you start the server by clicking the button and when the client connects it will pop up a message showing the name of the computer that connected they you need to choose a directory you want for client to be able to download. Then the client chooses the file or folder he wants to download.
 
-The server needs to choose the directory that they want for the client to see and download files or folders from.
+<p> When you start you need to type in your ip or port by default it will auto detect ip and 52000 port then you start the server by clicking the button and when the client connects it will pop up a message showing the name of the computer that connected they you need to choose a directory you want for client to be able to download. Then the client chooses the file or folder he wants to download. </p>
 
 ![Image of the server choosing file](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/Capture.PNG)
