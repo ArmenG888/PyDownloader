@@ -44,7 +44,6 @@ class server(QMainWindow):
         self.ui.start_server_button.deleteLater()
 
     def prepare_download(self,directory=""):
-        print(directory)
         # gets the list of files to send to the client
         if directory != "":
             files = os.listdir(directory)
@@ -54,7 +53,8 @@ class server(QMainWindow):
 
         x = ""
         for i in files:
-            x += i +","
+            x += i +" size: "+size(os.path.getsize(i))+","
+
         self.conn.send(x.encode())
         # receives the name of the file and sends back the size of it
         file = self.conn.recv(1024).decode()

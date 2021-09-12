@@ -5,7 +5,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFo
 from PySide2.QtWidgets import *
 from ui_downloader import Ui_Main
 from hurry.filesize import size
-ip_port = ('192.168.56.1', 52000)
+ip_port = ('127.0.0.1', 52000)
 class client(QMainWindow):
     def __init__(self,ip_port):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,7 +26,6 @@ class client(QMainWindow):
         self.ui.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
         self.available_files = available_files.split(",")
         # adds all files into a list
         for i in self.available_files:
@@ -43,6 +42,8 @@ class client(QMainWindow):
     def download(self,item):
         # gets the file that is selected
         self.file = item.text()
+        self.file = self.file.split("size:")
+        self.file = self.file[0]
         # send the file that the client wants to download
         self.s.send(self.file.encode())
         # receives if it's a directory
