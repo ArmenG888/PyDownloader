@@ -23,7 +23,7 @@ Move the client.py to the computer that you want to send files to and put the se
 ![Image of the server](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/server_screenshot.PNG)
 
 <h1> Usage </h1>
-When you start the server and the client connects you need to choose the directory you want the client to be able to see and download things from that directory.
+When you start you need to type in your ip or port by default it will auto detect ip and 52000 port then you start the server by clicking the button and when the client connects it will pop up a message showing the name of the computer that connected they you need to choose a directory you want for client to be able to download. Then the client chooses the file or folder he wants to download.
 
 The server needs to choose the directory that they want for the client to see and download files or folders from.
 
