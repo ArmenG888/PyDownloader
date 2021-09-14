@@ -26,6 +26,7 @@ class client(QMainWindow):
         self.ui.setupUi(self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.ui.ip_label.setText(ip_port[0])
         self.available_files = available_files.split(",")
         # adds all files into a list
         for i in self.available_files:
