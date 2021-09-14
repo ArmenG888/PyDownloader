@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'downloaderXKfhiH.ui'
+## Form generated from reading UI file 'downloaderFNzIGb.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -87,6 +87,10 @@ class Ui_Main(object):
         self.exit_button.setStyleSheet(u"")
         self.exit_button.setAutoDefault(False)
         self.exit_button.setFlat(True)
+        self.ip_label = QLabel(self.drop)
+        self.ip_label.setObjectName(u"ip_label")
+        self.ip_label.setGeometry(QRect(10, 0, 47, 13))
+        self.ip_label.setStyleSheet(u"color: rgb(98,114,250);")
 
         self.verticalLayout.addWidget(self.drop)
 
@@ -105,5 +109,6 @@ class Ui_Main(object):
         self.Downloader.setText(QCoreApplication.translate("Main", u"<html><head/><body><p>PyDownloader</p><p><br/></p></body></html>", None))
         self.Info_label.setText(QCoreApplication.translate("Main", u"<html><head/><body><p>NA/NA NA Mb/s ETA: NA TM: NA</p></body></html>", None))
         self.exit_button.setText(QCoreApplication.translate("Main", u"\u2715", None))
+        self.ip_label.setText("")
     # retranslateUi
 
