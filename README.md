@@ -20,7 +20,7 @@ Linux or Mac
 2. Move the client.py
 Move the client.py or download to the computer that you want to send files to and put the server.py in the computer from where you want to send.
 
-![Image of the server](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/server_screenshot.PNG)
+![Image of the server](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/server_downloader.PNG)
 
 <h1> Usage </h1>
 
