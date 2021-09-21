@@ -5,7 +5,7 @@ This is very useful to transfer big files from one computer to another.
 
 The client can download any file or folder that is located in servers folder.
 
-![Image of the client](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/PyDownloaderV0.6.PNG)
+![Image of the client](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/PyDownloader.PNG)
 
 <h1> Installation </h1>
 1. Download it
@@ -29,3 +29,7 @@ When you start you need to type in your ip or port by default it will auto detec
 ![Image of the server choosing file](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/Capture.PNG)
 
 If you're just testing and download files on the same computer note that the download speed will be very high compared to when connected to different computer and you need to place the client or the server file into another directory or there can be errors.
+
+When the download finishes the client can see how much time it took for it to download
+
+![Image of the client finished download](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/PyDownloader_Download_Complete.PNG)
