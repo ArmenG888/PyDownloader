@@ -113,7 +113,6 @@ class client(QMainWindow):
             os.remove(file_1)
         # success message
         QMessageBox.information(self, "Succes", "The file " + self.file +" has succesfully been downloaded.")
-        self.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
