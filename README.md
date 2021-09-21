@@ -5,7 +5,7 @@ This is very useful to transfer big files from one computer to another.
 
 The client can download any file or folder that is located in servers folder.
 
-![Image of the client](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/PyDownloaderV0.6.PNG)
+![Image of the client](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshot/PyDownloader.PNG)
 
 <h1> Installation </h1>
 1. Download it
