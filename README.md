@@ -35,6 +35,9 @@ When the download finishes the client can see how much time it took for it to do
 ![Image of the client finished download](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshots/PyDownloader_Download_Complete.PNG)
 
 <h2> Updates </h2>
+<h3> 0.1 </h3>
+
+![Image of the client 0.1](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshots/tk%209_1_2021%204_16_01%20PM%20(2).png)
 
 <h3> 0.2 </h3>
 
