@@ -33,3 +33,13 @@ If you're just testing and download files on the same computer note that the dow
 When the download finishes the client can see how much time it took for it to download
 
 ![Image of the client finished download](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshots/PyDownloader_Download_Complete.PNG)
+
+<h2> Updates </h2>
+
+<h3> 0.2 </h3>
+
+![Image of the client 0.2](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshots/Downloader_python3.PNG)
+
+<h3> 0.5 </h3>
+
+![Image of the client 0.5](https://raw.githubusercontent.com/ArmenG888/PyDownloader/main/Screenshots/PyDownloader.PNG)
